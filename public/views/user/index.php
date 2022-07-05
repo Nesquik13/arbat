@@ -8,6 +8,25 @@ use yii\grid\GridView;
  */
 
 echo GridView::widget([
-        'dataProvider' => $dataProvider
-    ]);
+    'dataProvider' => $dataProvider,
+    'columns' => [
+        'id',
+        'name',
+        'surname',
+//        'password',
+        'phone',
+        'email',
+        'created_at:datetime',
+        'updated_at:datetime',
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete} {up}',
+//            'buttons' => [
+//                    'up' => function (){
+//                        return 'up';
+//                    }
+//                ]
+        ]
+    ]
+]);
 

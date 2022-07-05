@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 
@@ -16,29 +17,51 @@ class UserController extends Controller
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
-    public function actionCreate()
-    {
-        $model = new User();
-        if($post = \Yii::$app->request->post() ){
-            if($model->load($post) && $model->save()){
-                return $this->redirect('/user/index');
-            }
+    public function actionCreateUpdate($id){
+        if($id == null){
+            $model = new User();
+        } else {
+            $model = User::findOne($id);
         }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('/user/index');
+        }
+
         return $this->render('create', ['model' => $model]);
     }
 
-    public function actionUpdated()
+    public function actionCreate()
     {
-        return $this->render('updated');
+        return $this->actionCreateUpdate(null);
+//        $model = new User();
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect('/user/index');
+//        }
+//
+//        return $this->render('create', ['model' => $model]);
     }
 
-    public function actionView()
+    public function actionUpdate($id)
     {
-        return $this->render('view');
+        return $this->actionCreateUpdate($id);
+//        $model = User::findOne($id);
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect('/user/index');
+//        }
+//        return $this->render('update', ['model' => $model]);
     }
 
-    public function actionDelete()
+    public function actionView($id)
     {
-        return $this->redirect('/index');
+        $model = User::findOne($id);
+        return $this->render('view', ['model' => $model]);
+    }
+
+    public function actionDelete($id)
+    {
+        $user = User::findOne($id);
+        $user->delete();
+        return $this->redirect('/user/index');
     }
 }
