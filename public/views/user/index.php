@@ -1,14 +1,17 @@
 <?php
 
+use app\models\UserSearch;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 
 /**
  * @var ActiveDataProvider $dataProvider
+ * @var UserSearch $searchModel
  */
 
 echo GridView::widget([
     'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
     'columns' => [
         'id',
         'name',

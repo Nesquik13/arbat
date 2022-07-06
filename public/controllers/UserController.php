@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use app\models\UserSearch;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -11,10 +12,12 @@ class UserController extends Controller
 {
     public function actionIndex(): string
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => User::find()
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
         ]);
-        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     public function actionCreateUpdate($id){
@@ -64,4 +67,5 @@ class UserController extends Controller
         $user->delete();
         return $this->redirect('/user/index');
     }
+
 }

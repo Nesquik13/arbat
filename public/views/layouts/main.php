@@ -37,8 +37,20 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Пользователи', 'url' => ['/user/index']],
-            ['label' => 'Добавить пользователя', 'url' => ['/user/create']],
+            [
+                'label' => 'Пользователи',
+                'items' => [
+                    ['label' => 'Список пользователей', 'url' => ['/user/index']],
+                    ['label' => 'Создать пользователя', 'url' => ['/user/create']],
+                ]
+            ],
+            [
+                'label' => 'Книги',
+                'items' => [
+                    ['label' => 'Список книг', 'url' => ['/book/index']],
+                    ['label' => 'Добавить книгу', 'url' => ['/book/create']],
+                ]
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
             ) : (
