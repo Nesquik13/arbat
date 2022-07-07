@@ -4,8 +4,19 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
+/**
+ * @property $tittle
+ * @property $author
+ * @property $pages
+ * @property $age
+ */
 class Book extends ActiveRecord
 {
+    public static function tableName()
+    {
+        return 'book';
+    }
+
     public function rules()
     {
         return [

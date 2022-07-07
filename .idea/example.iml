@@ -88,6 +88,8 @@
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/phar-io/version" />
       <excludeFolder url="file://$MODULE_DIR$/public/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-krajee-base" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vendor/kartik-v/yii2-widget-datepicker" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

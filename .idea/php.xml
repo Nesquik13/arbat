@@ -88,6 +88,8 @@
       <path value="$PROJECT_DIR$/public/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/public/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/public/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/public/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/public/vendor/kartik-v/yii2-widget-datepicker" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
