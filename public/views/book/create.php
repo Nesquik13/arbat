@@ -14,3 +14,5 @@ echo $form->field($model, 'pages');
 echo $form->field($model, 'age');
 echo Html::submitButton('Добавить');
 ActiveForm::end();
+
+echo Html::a('nazad', Yii::$app->request->referrer);
