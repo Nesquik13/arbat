@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
@@ -9,6 +10,8 @@ use yii\db\ActiveRecord;
  * @property $author
  * @property $pages
  * @property $age
+ *
+ * @property User $user
  */
 class Book extends ActiveRecord
 {
@@ -31,5 +34,10 @@ class Book extends ActiveRecord
             'pages' => 'Кол-во страниц',
             'age' => 'Год издания'
         ];
+    }
+
+    public function getUser(): ActiveQuery
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

@@ -129,7 +129,6 @@ class SiteController extends Controller
 
     public function actionTest()
     {
-        $builder = new Builder();
-        echo $builder->setName('Viktor')->hello()->write();
+        return $this->render('test');
     }
 }
