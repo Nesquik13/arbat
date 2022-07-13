@@ -29,7 +29,7 @@ use yii\helpers\Url;
 $models = $dataProvider->models;
 echo BookListWidget::widget([
         'models' => $models,
-        'btnClass' => 'btn-danger'
+        'btnClass' => 'btn-danger',
 ]);
 
 

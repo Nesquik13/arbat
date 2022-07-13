@@ -18,6 +18,6 @@ if(!$model->id){
 }
 echo $form->field($model, 'phone')->widget(MaskedInput::class, ['mask' => '+7-999-999-99-99']);
 echo $form->field($model, 'email');
-echo Html::submitButton('Добавить', ['class' => 'btn btn-primary', 'id' => 'send']);
+echo Html::submitButton('Добавить', ['class' => 'btn btn-danger', 'id' => 'send']);
 
 ActiveForm::end();

@@ -10,7 +10,7 @@ use yii\db\ActiveRecord;
  * @property $author
  * @property $pages
  * @property $age
- *
+ * @property $user_id
  * @property User $user
  */
 class Book extends ActiveRecord
@@ -23,7 +23,7 @@ class Book extends ActiveRecord
     public function rules()
     {
         return [
-            [['tittle', 'author', 'pages', 'age'], 'required']
+            [['tittle', 'author', 'pages', 'age', 'user_id'], 'required']
         ];
     }
     public function attributeLabels()
@@ -32,7 +32,8 @@ class Book extends ActiveRecord
             'tittle' => 'Название книги',
             'author' => 'Автор',
             'pages' => 'Кол-во страниц',
-            'age' => 'Год издания'
+            'age' => 'Год издания',
+            'user_id' => 'Пользователь',
         ];
     }
 

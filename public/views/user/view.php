@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Book;
 use app\models\User;
 use yii\widgets\DetailView;
 
@@ -16,6 +17,20 @@ echo DetailView::widget([
         'password',
         'phone',
         'email',
+        [
+            'attribute' => 'books',
+            'value' => function($user)
+            {
+                /** @var User $user */
+                $books = [];
+                /** @var Book $book */
+                foreach ($user->books as $book)
+                {
+                    $books[] = $book->tittle;
+                }
+                return implode(', ', $books);
+            }
+        ],
         'created_at:datetime',
         'updated_at:datetime',
     ]

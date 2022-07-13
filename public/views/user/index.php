@@ -1,16 +1,19 @@
 <?php
 
+use app\models\Book;
+use app\models\User;
 use app\models\UserSearch;
 use kartik\date\DatePicker;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 /**
  * @var ActiveDataProvider $dataProvider
  * @var UserSearch $searchModel
  */
-
+Pjax::begin(['timeout' => 10000]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -29,6 +32,20 @@ echo GridView::widget([
             ]
         ],
         'email',
+        [
+            'attribute' => 'bookTittle',
+            'value' => function($user)
+            {
+                /** @var User $user */
+                $books = [];
+                /** @var Book $book */
+                foreach ($user->books as $book)
+                {
+                    $books[] = $book->tittle;
+                }
+                return implode(', ', $books);
+            }
+        ],
 //        'created_at:datetime',
         [
             'attribute' => 'created_at',
@@ -58,7 +75,7 @@ echo GridView::widget([
                     'autoclose' => true,
                     'format' => 'dd.MM.yyyy'
                 ],
-                'convertFormat' => true
+                'convertFormat' => true,
             ])
         ],
         [
@@ -72,4 +89,5 @@ echo GridView::widget([
         ]
     ]
 ]);
+Pjax::end();
 

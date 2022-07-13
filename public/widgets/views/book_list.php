@@ -5,10 +5,8 @@
  */
 
 use app\models\Book;
+use yii\helpers\Html;
 use yii\helpers\Url;
-
-$a = $models[0];
-$b = 0;
 ?>
 
 <div class="row">
@@ -20,8 +18,9 @@ foreach ($models as $model) {?>
             <div class="card-body">
                 <h5 class="card-title"><?= $model->tittle ?></h5>
                 <p class="card-text"><?= /*$model->info*/'Информация о книге'?></p>
-                <p class="card-text"><?= !is_null($model->user) ? $model->user->name : 'Нет пользователя' ?></p>
-                <a href="<?= Url::to(['/book/update', 'id' => $model->id]) ?>" class="btn <?= $btnClass ?>">Редактировать</a>
+                <p class="card-text"><?= !is_null($model->user) ? Html::a($model->user->name, Url::to(['/user/view', 'id' => $model->user->id]) ) : 'Нет пользователя' ?></p>
+                <a href="<?= Url::to(['/book/update', 'id' => $model->id]) ?>" class="btn btn-info">Редактировать</a>
+                <a href="<?= Url::to(['/book/delete', 'id' => $model->id]) ?>" class="btn <?= $btnClass ?>">Удалить</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Book;
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,7 +13,8 @@ echo $form->field($model, 'tittle');
 echo $form->field($model, 'author');
 echo $form->field($model, 'pages');
 echo $form->field($model, 'age');
-echo Html::submitButton('Добавить');
+echo $form->field($model, 'user_id')->dropDownList(User::getUserList());
+echo Html::submitButton('Добавить', ['class' => 'btn btn-danger']);
 ActiveForm::end();
 
-echo Html::a('nazad', Yii::$app->request->referrer);
+#echo Html::a('nazad', Yii::$app->request->referrer);
