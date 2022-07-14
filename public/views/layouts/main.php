@@ -51,6 +51,7 @@ AppAsset::register($this);
                     ['label' => 'Добавить книгу', 'url' => ['/book/create']],
                 ]
             ],
+            ['label' => 'Чат', 'url' => ['/chat/index']],
         ],
     ]);
     NavBar::end();

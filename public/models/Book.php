@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
  * @property $pages
  * @property $age
  * @property $user_id
+ *
  * @property User $user
  */
 class Book extends ActiveRecord
