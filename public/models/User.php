@@ -21,6 +21,8 @@ use yii\db\Expression;
  */
 class User extends ActiveRecord
 {
+
+    const ADMIN_ID = 1;
     public function behaviors()
     {
         return [

@@ -3,13 +3,13 @@
 namespace app\controllers;
 
 use app\models\Message;
+use app\models\User;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
 
 class ChatController extends Controller
 {
-    const ADMIN_ID = 7;
 
     public function actionIndex(int $id = null)
     {
@@ -17,7 +17,7 @@ class ChatController extends Controller
         $newMessage = new Message();
         if(is_null($id)){
             $isAdmin = true;
-            $id = self::ADMIN_ID;
+            $id = User::ADMIN_ID;
             $messages = Message::find()->all();
         } else {
             $messages = Message::find()
@@ -25,11 +25,11 @@ class ChatController extends Controller
                 ->orWhere(['user_id_from' => $id])
                 ->with(['userTo', 'userFrom'])
                 ->all();
-            $newMessage->user_id_from = self::ADMIN_ID;
+            $newMessage->user_id_from = User::ADMIN_ID;
         }
         $newMessage->user_id_to = $id;
 
-        if($newMessage->load(Yii::$app->request->post()) && $newMessage->save()){
+        if($newMessage->load(Yii::$app->request->post()) && $newMessage->save(false)){
             return $this->redirect(Url::current(Yii::$app->request->queryParams));
         }
         return $this->render('index', [
