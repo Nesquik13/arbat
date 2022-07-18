@@ -14,11 +14,14 @@ use yii\widgets\ActiveForm;
  * @var View $this
  */
 
-$this->registerJs(<<<JS
-$.get('/user/user-list', {q: 'Вик'}, function (data){
-    alert(data);
-})
-JS, View::POS_READY);
+//$this->registerJs(<<<JS
+//$.get('/user/user-list', {q: 'Вик'}, function (data){
+//    alert(data);0
+//})
+//JS, View::POS_READY);
+
+$this->params['breadcrumbs'][] = ['label' => 'Подкатегория', 'url' => ['/category/subcategory']];
+
 
 $path = $isAdmin ? '_admin_form' : '_user_form';
 
